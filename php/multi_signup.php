@@ -2,113 +2,101 @@
 require_once('user.php');
 ob_start();
 
-    //code for multi form
-if($_POST['finish'] == '')
+//code for multi form
+$status = false;
+$respmsg = 'Something went wrong';
+
+if(isset($_POST['action']) && $_POST['action'] == 'submitForm')
 {
 
     $user=new User();
-    if($_POST['first_name']  && $_POST['last_name'])
+    if(isset($_POST['first_name'])  && isset($_POST['last_name']))
     {
-            //personal detail
-        $first_name=$_POST['first_name'];
-        $middle_name=$_POST['middle_name'];
-        $last_name=$_POST['last_name'];
-        $email=$_POST['email'];
-        $state=$_POST['state'];
-        $birthdate=$_POST['birthdate'];
-        $gender=$_POST['gender'];
-        $password=$_POST['password'];
-
-        if(!empty($first_name)&&!empty($last_name)&&!empty($email)&&!empty($password))
-        {
+        //personal detail
+        $first_name= isset($_POST['first_name']) ? $_POST['first_name'] : '';
+        $last_name= isset($_POST['last_name']) ? $_POST['last_name'] : '';
+        $address= isset($_POST['address']) ? $_POST['address'] : '';
+		$city= isset($_POST['city']) ? $_POST['city'] : '';
+        $state= isset($_POST['state']) ? $_POST['state'] : '';
+        $zipcode= isset($_POST['zipcode']) ? $_POST['zipcode'] : '';
+        $mobile_no= isset($_POST['mobile_no']) ? $_POST['mobile_no'] : '';
+        $birthdate= isset($_POST['birthdate']) ? $_POST['birthdate'] : '';
+        $gender= isset($_POST['gender']) ? $_POST['gender'] : '';
             
-                $user->insertPersonalInfo($first_name,$middle_name,$last_name,$birthdate,$state,$gender,$email,$password);
+
+        if($first_name != '' && $last_name != '' && $address != '' && $city != ''&& $zipcode != '' && $mobile_no!='')
+        {
+            /* insert personal detail */
+            $user->insertPersonalInfo($first_name,$last_name,$address,$city,$state,$zipcode,$mobile_no,$birthdate,$gender);
         }
         else
         {
-
-            ?>
-            <script>alert('Please fill all personal details.');history.back();</script>
-            <?php
-
+        	echo json_encode(array('status'=>$status,'message'=>$respmsg));exit;
         }
     }
 
-
-    if(isset($_POST['payment']))
+    //Do this for all variable isset(varible name)
+    if(isset($_POST['card_no']) && isset($_POST['card_holder']) && isset($_POST['card_month']) && isset($_POST['card_year']) && isset($_POST['card_cvv']))
     {
-        
-    }
-    if($_POST['bill_first_name'] && $_POST['bill_city'] && $_POST['bill_address'] && $_POST['bill_pincode'] && $_POST['card_no'] && $_POST['card_expiry'] && $_POST['card_cvv'])
-    {
-            //billing detail
-        $bill_first_name=$_POST['bill_first_name'];
-        $bill_address=$_POST['bill_address'];
-        $bill_city=$_POST['bill_city'];
-        $bill_pincode=$_POST['bill_pincode'];
-        $bill_country=$_POST['bill_country'];
+        //card info
+        $card_no= isset($_POST['card_no']) ? $_POST['card_no'] : '';
+        $card_holder= isset($_POST['card_holder']) ? $_POST['card_holder'] : '';
+        $card_month= isset($_POST['card_month']) ? $_POST['card_month'] : '';
+        $card_year= isset($_POST['card_year']) ? $_POST['card_year'] : '';
+        $card_cvv= isset($_POST['card_cvv']) ? $_POST['card_cvv'] : '';
 
-        
-             //card info
-            $card_no=$_POST['card_no'];
-            $card_holder=$_POST['card_holder'];
-            $card_expiry=$_POST['card_expiry'];
-            $card_cvv=$_POST['card_cvv'];
-
-        if(!empty($bill_first_name)&&!empty($bill_address)&&!empty($bill_city))
+        if($card_no != '' && $card_month != '' && $card_year != '' && $card_cvv != ''&& $card_holder != '')
         {
-            $user->insertBillingInfo($bill_first_name,$bill_address,$bill_city,$bill_pincode,$bill_country,$card_no,$card_holder,$card_expiry,$card_cvv);
+            $card_expiry = $card_month."/".$card_year;
+            
+            //insert billing info
+            $user->insertBillingInfo($card_no,$card_holder,$card_expiry,$card_cvv);
+            
         }
         else
         {
-
-            ?>
-            <script>alert('Please fill billing details.');history.back();</script>
-            <?php
-
+        	echo json_encode(array('status'=>$status,'message'=>$respmsg));exit;
         }
     }
 
-    if($_POST['enrollee_type'])
+    if(isset($_POST['enrollee_type']))
     {
-            //product detail
-        $enrollee_type=$_POST['enrollee_type'];
-        $pricing_plan=$_POST['lb_pricing_plan'];
-        $plan_cost=$_POST['lb_plan_cost'];
-        $plan_type=$_POST['lb_plan_type'];
+        //product detail
+        $enrollee_type= isset($_POST['enrollee_type']) ?  $_POST['enrollee_type'] : '';
+        $pricing_plan= isset($_POST['lb_pricing_plan']) ?  $_POST['lb_pricing_plan'] : '';
+        $plan_cost= isset($_POST['lb_plan_cost']) ?  $_POST['lb_plan_cost'] : '';
+        $plan_type= isset($_POST['lb_plan_type']) ?  $_POST['lb_plan_type'] : '';
 
+        //insert plan info
         $user->insertPlanInfo($enrollee_type,$pricing_plan,$plan_cost,$plan_type);
 
+        /* check for enrollment type  */
         if($enrollee_type=="Family"){
-                //participant details
-            $fam_first_name=$_POST['fam_first_name'];
-            $fam_middle_name=$_POST['fam_middle_name'];
-            $fam_last_name=$_POST['fam_last_name'];
-            $fam_birthdate=$_POST['fam_birthdate'];
-            $fam_gender=$_POST['fam_gender'];
-            $fam_state=$_POST['fam_state'];
-            $user->insertParticipantInfo($fam_first_name,$fam_middle_name,$fam_last_name,$fam_birthdate,$fam_gender,$fam_state);
+            //participant details
+            $fam_first_name= isset($_POST['fam_first_name']) ?  $_POST['fam_first_name'] : '';
+            $fam_last_name= isset($_POST['fam_last_name']) ?  $_POST['fam_last_name'] : '';
+            $fam_birthdate= isset($_POST['fam_birthdate']) ?  $_POST['fam_birthdate'] : '';
+            $fam_gender= isset($_POST['fam_gender']) ?  $_POST['fam_gender'] : '';
+            $fam_state= isset($_POST['fam_state']) ?  $_POST['fam_state'] : '';
+            
+            //insert family info
+            $user->insertParticipantInfo($fam_first_name,$fam_last_name,$fam_birthdate,$fam_gender,$fam_state);
         }
-
     }
 
-        //check for all results
+    /* check for succesfull operations */
     if($user->isSuccess())
     {
+        /* unset current user id */
         $_SESSION['cur_id']="";
-        session_destroy();
-        
-        return $user->isSuccess();
-        ?>
-        <script>alert('Registration successful.');window.location.href='../index2.php?res=1';</script>
-        <?php
+        unset($_SESSION['cur_id']);
 
-        
+        $status = true;
+        $respmsg = 'Registration successful';
     }
-    else{
-        ?>
-        <script>alert('Error in registration.');</script>
-        <?php
-    }
+
+    echo json_encode(array('status'=>$status,'message'=>$respmsg));exit;
+}else{
+	echo json_encode(array('status'=>$status,'message'=>'Please fill mandatory details.'));exit;
 }
 ?>

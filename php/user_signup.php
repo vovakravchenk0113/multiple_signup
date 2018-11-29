@@ -2,26 +2,32 @@
 require_once('user.php');
 require_once('dbconnect.php');
 ob_start();
+
 $user=new User();
 
 if(isset($_POST['submit']))
 {
-        //signup detail
-        $first_name=test_input($_POST['first_name']);
-        $email=test_input($_POST['email']);
-        $phone=test_input($_POST['phone']);
-        
-        if(!empty($first_name)&&!empty($email)&&!empty($phone))
+        if(isset($_POST['first_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['last_name']))
         {
+            $first_name= isset($_POST['first_name']) ? $_POST['first_name'] : '';
+            $last_name= isset($_POST['last_name']) ? $_POST['last_name'] : '';
+            $email= isset($_POST['email']) ? $_POST['email'] : '';
+            $password= isset($_POST['password']) ? $_POST['password'] : '';
+
+            if($first_name != '' && $last_name != '' && $email != '' && $password != '')
+            {
+                //check for email format
                 if(valid_email($email))
                 {
+                    //check if user exists with email
                     if( $user->checkEmail($email))
                     {
-                        $id=$user->signUp($first_name,$email,$phone);
-                        if($id!=0)
+                        $id=$user->signUp($first_name,$last_name,$email,$password);
+                        if($id>0)
                         {
+                            //set current user id for the form
                             $_SESSION['cur_id']=$id;
-                            header('Location:../index2.php?id='.$id);
+                            header('Location:../registration.php');
                         }
                         else{
                         ?>
@@ -31,7 +37,7 @@ if(isset($_POST['submit']))
                     }
                     else{
                         ?>
-                            <script>alert('Email is not available.');history.back();</script>
+                            <script>alert('Email address is already registered.');history.back();</script>
                         <?php
                         }
                 }
@@ -39,20 +45,12 @@ if(isset($_POST['submit']))
                     ?>
                         <script>alert('Email addrees is not valid.');history.back();</script>
                     <?php
-                    }        
-        }
-        else{
-            ?>
-                <script>alert('Please provide all details.');history.back();</script>
-            <?php
+                    } 
             }
+        }
 }
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
+
+//function to chek email address
 function valid_email($email) 
 {
     if(is_array($email) || is_numeric($email) || is_bool($email) || is_float($email) || is_file($email) || is_dir($email) || is_int($email))

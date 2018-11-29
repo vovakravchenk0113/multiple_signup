@@ -27,105 +27,92 @@ $(document).ready(function(){
     var $validator = $('.wizard-card form').validate({
 		  rules: {
 		    first_name: {
-		      required: true,
+              required: true,
+              minlength:3,
 		    },
 		    last_name: {
 		      required: true,
 		    },
-		    email: {
+		    address: {
               required: true,
-              email:true,
             },
-            confirm_email:{
-                required: true,
-                equalTo: "#email",
+			city: {
+              required: true,
             },
-            password: {
-                required: true,
-                minlength: 6,
+            zipcode:{
+                required:true,
+                digits:true,
+                minlength:6,
+                maxlength:6,
             },
-            confirm_password: {
-                required: true,
-                minlength: 6,
-                equalTo: "#password"
+            mobile_no:{
+                required:true,
+                digits:true,
+                minlength:10,
             },
             birthdate : {
                 required :true,
                 date : true,
             },
-            bill_first_name:{
-                required:true,
-            },
-            bill_address:{
-                required:true,
-            },
-            bill_city:{
-                required:true,
-            },
-            bill_pincode:{
-                required:true,
-                digits:true,
-            },
             card_no:{
                 required:true,
                 digits:true,
-            },
-            card_expiry:{
-                required:true,
+                minlength:16,
+                maxlength:16,
             },
             card_cvv:{
                 required:true,
                 digits:true,
+                minlength:3,
+                maxlength:3,
             },
-            
-            "fam_first_name[]":"required",
+            "fam_first_name[]":{
+                required:true,
+                minlength:3,
+            },
             "fam_last_name[]":"required",
         },
         messages :{
 				"first_name" : {
-					required : 'Enter first name.',	
+                    required : 'Enter first name.',
+                    minlength: jQuery.validator.format("At least {3} characters required!"),		
 				},
 				"last_name" : {
 					required : 'Enter last name.',	
                 },
-                "email" : {
-                    required : 'Enter email address.',
-                    email:'Invalid email address',	
+                "address" : {
+					required : 'Enter address.',	
                 },
-                "password": {
-                    required: "Please provide a password.",
-                    minlength: "Your password must be at least 6 characters long"
-                  },
-                  "bill_first_name":{
-                      required:"Enter billing name.",
-                  },
-                  "bill_address":{
-                    required:"Enter bill address.",
-                    },
-                    "bill_city":{
-                        required:"Enter bill city.",
-                    },
-                    "bill_pincode":{
-                        required:"Enter pincode.",
-                        digits:"Only digits are allowed.",
-                    },
-                    "card_cvv":{
+				"city" : {
+					required : 'Enter city name.',	
+                },
+                "card_cvv":{
                         required:"Enter card cvv no.",
                         digits:"Only digits are allowed.",
+                        minlength: jQuery.validator.format("At least {3} digits required!"),		
                     },
                     "card_no":{
                         required:"Enter card no.",
                         digits:"Only digits are allowed.",
-                    },
-                    "card_expiry":{
-                        required:"Enter card expiry",
+                        minlength: jQuery.validator.format("At least {16} digits required!"),		
                     },
                     "birthdate":{
                         required:"Enter birthdate.",
                         date:"Enter valid date.",
                     },
-                    "fam_first_name[]":"Enter first name.",
+                    "fam_first_name[]":{
+                        required:"Enter first name.",
+                        minlength: jQuery.validator.format("At least {3} characters required!"),		
+                    },
                     "fam_last_name[]":"Enter last name",
+                    "zipcode" : {
+                        required : 'Enter zipcode.',
+                        minlength: jQuery.validator.format("At least {6} digits required!"),		
+                    },
+                    "mobile_no" : {
+                        required : 'Enter mobile number.',
+                        minlength: jQuery.validator.format("At least {10} digits required!"),		
+                    },
 			}
 	});
 
