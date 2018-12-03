@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 07:02 AM
+-- Generation Time: Nov 13, 2018 at 07:27 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -86,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `user_personal_detail` (
 CREATE TABLE IF NOT EXISTS `user_plan_detail` (
   `u_id` int(11) NOT NULL,
   `enrollee_type` varchar(255) NOT NULL,
-  `no_of_member` int(11) NOT NULL DEFAULT '0',
   `pricing_plan` varchar(255) NOT NULL,
   `plan_cost` double NOT NULL,
   `plan_type` varchar(255) NOT NULL,

@@ -87,14 +87,14 @@ if($arr==null)
 					<div class="col-sm-12">
 						<h4 class="info-text">Registration-Step 1</h4>
 					</div>
-					<div class="col-sm-5 col-sm-offset-1">
+					<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 					   <div class="form-group">
 							<label>First Name</label>
 							<input type="text" name="first_name" class="form-control"  value="<?php echo $arr[0]?>">
 					  </div>
 					</div>
 					
-					<div class="col-sm-5">
+					<div class="col-sm-5 softenite_mobile">
 						<div class="form-group">
 							<label>Last Name</label>
 							<input type="text" name="last_name" class="form-control"  value="<?php echo $arr[1]?>">
@@ -102,7 +102,7 @@ if($arr==null)
 					</div>
 				</div><!--./row-->
 				<div class="row">
-					<div class="col-sm-5 col-sm-offset-1">
+					<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 						<div class="form-group">
 							<label>Address</label>
 							<textarea name="address" class="form-control"></textarea>
@@ -110,21 +110,21 @@ if($arr==null)
 						</div>					
 				</div><!--./row-->
 				<div class="row">
-					<div class="col-sm-5 col-sm-offset-1">
+					<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 						<div class="form-group">
 							<label>City</label>
 							<input type="text" name="city" class="form-control">
 						</div>
 					</div>
-					<div class="col-sm-5 ">
+					<div class="col-sm-5 softenite_mobile">
 						<div class="form-group">
 							<label>Zip Code</label>
-							<input type="text" name="zipcode" maxlength="6" onkeypress="return isNumberKey(event)" class="form-control">
+							<input type="text" name="zipcode" maxlength="5" onkeypress="return isNumberKey(event)" class="form-control">
 						</div>
 					</div>
 				</div><!--./row-->
 				<div class="row">
-					<div class="col-sm-5 col-sm-offset-1">
+					<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 						<div class="form-group">
 							<label>State</label>
 							<select name="state" id="state" class="form-control" required>
@@ -140,7 +140,7 @@ if($arr==null)
 								</select>
 						</div>
 					</div>
-					<div class="col-sm-5 ">
+					<div class="col-sm-5 softenite_mobile">
 						<div class="form-group">
 							<label>Mobile Number</label>
 							<input type="text" name="mobile_no" maxlength="10" onkeypress="return isNumberKey(event)" class="form-control">
@@ -148,13 +148,13 @@ if($arr==null)
 					</div>
 				</div><!--./row-->
 				<div class="row">
-					<div class="col-sm-5 col-sm-offset-1">
+					<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 						<div class="form-group">
 							<label>Birth Date</label>
 							<input type="date" name="birthdate" id="birthdate" class="form-control">
 						</div>
 					</div>
-					<div class="col-sm-5 ">
+					<div class="col-sm-5 softenite_mobile">
 						<div class="form-group">
 							<label>Gender</label>
 							<select name="gender" class="form-control">
@@ -170,7 +170,7 @@ if($arr==null)
 				<div class="col-sm-12">
 				  <h4 class="info-text">Product and Coverage-Step 2</h4>
 				</div>
-				<div class="col-sm-4 col-sm-offset-1">
+				<div class="col-sm-4 col-sm-offset-1 softenite_mobile">
 					<div class="form-group">
 						<label>Enrollee Type</label>
 						<select name="enrollee_type" id="enrollee_type" class="form-control" required>
@@ -179,33 +179,22 @@ if($arr==null)
 						</select>
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="form-group">
-						<label>Date of birth</label>
-						<input type="text" id="lb_birthdate" name="lb_birth_date" id="lb_birthdate" class="form-control"  readonly="readonly">
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="form-group">
-						<label>State</label>
-						<input type="text" id="lb_state" name="lb_state" id="lb_state" class="form-control"  readonly="readonly">
-					</div>
-				</div>
+				
 			</div><!--./row-->
 			<div class="row">
-				<div class="col-sm-4 col-sm-offset-1">
+				<div class="col-sm-4 col-sm-offset-1 softenite_mobile">
 					<div class="form-group">
 						<label>Pricing Plan</label><br>
 						<input type="text" name="lb_pricing_plan" value="plan1" class="form-control"  readonly="readonly">
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3 softenite_mobile">
 					<div class="form-group">
 						<label>Cost</label><br>
 						<input type="text" name="lb_plan_cost" value="5000" id="lb_plan_cost" value="100.0" class="form-control"  readonly="readonly">
 					</div>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3 softenite_mobile">
 					<div class="form-group">
 						<label>Type</label><br>
 						<input type="text" value="monthly" name="lb_plan_type" class="form-control"  readonly="readonly">
@@ -220,7 +209,7 @@ if($arr==null)
       <h4 class="info-text">Participant-Step 3</h4>
     </div>
 
-    <div class="col-sm-5 col-sm-offset-1">
+    <div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 		<div class="form-group">
 			<label>Member</label><br>
 			<select name="member" id="member" class="form-control" required>
@@ -233,31 +222,31 @@ if($arr==null)
   </div>
   <div class="clearfix"></div>
   <div id="dash">
-    <div class="col-sm-5 col-sm-offset-1">
+    <div class="col-sm-5 col-sm-offset-1 softenite_mobile">
       <h6><strong>Member Details: <span class="softenite">1</span></strong></h6>
     </div>
     <div class="clearfix"></div>
-    <div class="col-sm-5 col-sm-offset-1">
+    <div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 		 <div class="form-group">
 			<label>First Name</label>
 			<input type="text" name="fam_first_name[]" class="form-control">
 		</div>
 	</div>
-	<div class="col-sm-5">
+	<div class="col-sm-5 softenite_mobile">
 		 <div class="form-group">
 		  <label>Last Name</label>
 		  <input type="text" name="fam_last_name[]" class="form-control">
 		</div>
 	</div>
 	<div class="clearfix"></div>
-	<div class="col-sm-5 col-sm-offset-1">
+	<div class="col-sm-5 col-sm-offset-1 softenite_mobile">
 		 <div class="form-group">
 		  <label>Date of Birth</label><br>
 		  <input type="date" name="fam_birthdate[]" class="form-control" required>
 
 		</div>
 	</div>
-	<div class="col-sm-5">
+	<div class="col-sm-5 softenite_mobile">
 		 <div class="form-group">
 		  <label>Gender</label><br>
 		  <select name="fam_gender[]" class="form-control" required>
@@ -268,7 +257,7 @@ if($arr==null)
 		</div>
 	</div>
 <div class="clearfix"></div>
-	<div class="col-sm-5 col-sm-offset-1">
+	<div class="col-sm-5 softenite_mobile col-sm-offset-1">
 	 <div class="form-group">
 	  <label>State of Residence</label>
 	  <select name="fam_state[]" class="form-control" required>
@@ -297,28 +286,28 @@ if($arr==null)
 
 <div class="tab-pane" id="billing">
   <div class="row">
-	   <div class="col-sm-12">
+	   <div class="col-sm-12 softenite_mobile">
 		<h4 class="info-text">Payment-Step 3</h4>
 	  </div>
   </div><!--./row-->
   <div class="row">
   <div id="cardinfo" class="soft_cardinfo">
 	  <h6 class="info-text text-center">Credit card Info</h6>
-	  <div class="col-sm-5 col-sm-offset-1">
+	  <div class="col-sm-5 softenite_mobile col-sm-offset-1">
 		<div class="form-group">
 		  
 			<label>CARD NUMBER</label>
 			<input type="text" id="card_no" onkeypress="return isNumberKey(event)" maxlength="16" name="card_no" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control">
 		  </div>
 		</div>
-		<div class="col-sm-5 ">
+		<div class="col-sm-5 softenite_mobile">
 		  <div class="form-group">
 			<label>CARD HOLDER NAME</label>
 			<input type="text" name="card_holder" class="form-control">
 		  </div>
 		</div>
 		<div class="clearfix"></div>
-		<div class="col-sm-2 col-sm-offset-1">
+		<div class="col-sm-2 softenite_mobile col-sm-offset-1">
 		  <div class="form-group">
 			<label>MONTH</label>
 				<select name="card_month" class="form-control">
@@ -337,7 +326,7 @@ if($arr==null)
 				</select>
 		  </div>
 		</div>
-		<div class="col-sm-2">
+		<div class="col-sm-2 softenite_mobile">
 		  <div class="form-group">
 			<label>YEAR</label>
 				<select name="card_year" class="form-control">
@@ -353,7 +342,7 @@ if($arr==null)
 		  </div>
 		</div>
 		
-		<div class="col-sm-2 col-sm-offset-1">
+		<div class="col-sm-2 softenite_mobile col-sm-offset-1">
 		  <div class="form-group">
 			<label>CVV</label>
 			<input type="text" placeholder="XXX" onkeypress="return isNumberKey(event)" maxlength="3" name="card_cvv" class="form-control">
@@ -375,13 +364,13 @@ if($arr==null)
       </p>
     </div>
     <div class="clearfix"></div>
-    <div class="col-sm-10 col-sm-offset-5">
-     <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-5 ">
+     <div class="form-group softenite_active">
        <input type='button' class='btn btn-fill btn-info btn-wd btn-sm' name='active_now' value='Active Now' /> 
      </div>
    </div>
    <div class="col-sm-10 col-sm-offset-5">
-     <div class="form-group">
+     <div class="form-group softenite_active">
       <input type='button' class='btn btn-fill btn-info btn-wd btn-sm' name='login' value='Login Now' />
     </div>
   </div>
@@ -426,6 +415,20 @@ if($arr==null)
 <script src="assets/js/jquery.creditCardValidator.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+
+		 $(document).on('click','.btn.btn-previous.btn-fill.btn-default.btn-wd.btn-sm.billing',function(e){
+		 	e.preventDefault();
+		 	var conceptName = $('[name="enrollee_type"].form-control').find(":selected").val();	
+		 	if(conceptName == 'Single')
+              {
+               $('a[href="#product"]').click();
+              }
+		 });
+
+	});
+</script>
+<script type="text/javascript">
   $(document).ready(function(){
 
 		var current_tab="";
@@ -448,6 +451,8 @@ if($arr==null)
 
             $('#next').removeClass('profile').removeClass('product').removeClass('participant').removeClass('billing').removeClass('review');
             $('#next').addClass(href);
+            $('#prev').removeClass('profile').removeClass('product').removeClass('participant').removeClass('billing').removeClass('review');
+            $('#prev').addClass(href);
             if(href == 'participant')
             {
               var conceptName = $('[name="enrollee_type"].form-control').find(":selected").val();

@@ -74,3 +74,22 @@
 	border-color: #4cd264;
 	outline: none !important;
 }
+
+@media only screen and (max-width: 768px) {
+.softenite_mobile{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.softenite_active{text-align: center;}
+#login_button {float:right;}
+h4.info-text{margin-bottom: 10px !important;}
+h4 {font-size: 20px !important;}
+.moving-tab{display: none}
+.wizard-container {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.wizard-navigation ul li{width: 33% !important;}
+.wizard-navigation ul li:nth-child(4),.wizard-navigation ul li:nth-child(5) { width:50% !important;}
+.wizard-navigation ul li.active{background-color:#2CA8FF } 
+}

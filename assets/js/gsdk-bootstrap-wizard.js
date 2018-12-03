@@ -42,8 +42,8 @@ $(document).ready(function(){
             zipcode:{
                 required:true,
                 digits:true,
-                minlength:6,
-                maxlength:6,
+                minlength:5,
+                maxlength:5,
             },
             mobile_no:{
                 required:true,
@@ -107,7 +107,7 @@ $(document).ready(function(){
                     "fam_last_name[]":"Enter last name",
                     "zipcode" : {
                         required : 'Enter zipcode.',
-                        minlength: jQuery.validator.format("At least {6} digits required!"),		
+                        minlength: jQuery.validator.format("At least {5} digits required!"),		
                     },
                     "mobile_no" : {
                         required : 'Enter mobile number.',
